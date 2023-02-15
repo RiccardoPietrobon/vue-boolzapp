@@ -202,6 +202,7 @@ const app = Vue.createApp({
             ],
 
             activeChat: 0,
+            filtro: "",
 
         }
     },
@@ -214,6 +215,16 @@ const app = Vue.createApp({
 
 
     },
+
+    computed: {
+        myContact() {
+            return this.contacts.filter(
+                element => {
+                    return element.name.toLocaleLowerCase().includes(this.filtro.toLowerCase());
+                }
+            );
+        }
+    }
 
 
 

@@ -40,7 +40,7 @@
 
         <div class="container">
 
-            <div class="row">
+            <div class="row p-5">
 
                 <div class="col-5 px-0">
                     <!-- navbar user -->
@@ -58,7 +58,7 @@
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                                 <div class="navbar-nav">
                                     <a class="nav-link" href="#">
-                                        <i class="fa-solid fa-spinner"></i>
+                                        <i class="fa-solid fa-circle-notch"></i>
                                     </a>
                                     <a class="nav-link" href="#">
                                         <i class="fa-solid fa-message"></i>
@@ -70,83 +70,91 @@
                             </div>
                         </div>
                     </nav>
-                    <!-- notifiche -->
-                    <div class="notifiche bg-info p-2 d-flex align-items-center">
-                        <i class="fa-solid fa-bell-slash p-2 rounded-circle bg-light me-2"></i>
-                        <div class="notifiche">
-                            <h5>Ricevi notifiche di nuovi messaggi</h5>
-                            <h6 class="text-secondary text-decoration-underline">Attiva notifiche testo</h6>
-                        </div>
-                    </div>
-                    <!-- search -->
-                    <div class="input-group my-2 p-1">
-                        <button class="btn btn-outline-info" type="button" id="button-addon1">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat"
-                            aria-label="Example text with button addon" aria-describedby="button-addon1">
-                    </div>
-                    <!-- users -->
-                    <div class="users">
-                        <div class="user d-flex py-3 border border-1" v-for="(contact, index) in contacts"
-                            :class="(index == activeChat) ? 'active' : '' " @click="switchChat(index)">
-                            <img :src="contact.avatar" alt="img-user" class="ms-2">
-                            <div class="descrizione ms-2">
-                                <h5>
-                                    {{contact.name}}
-                                </h5>
-                                <h6 v-for="sms in contact.messages">
+                    <div class="main">
 
-                                </h6>
+                        <!-- notifiche -->
+                        <div class="notifiche bg-info p-2 d-flex align-items-center">
+                            <i class="fa-solid fa-bell-slash p-2 rounded-circle bg-light me-2"></i>
+                            <div class="notifiche">
+                                <h5>Ricevi notifiche di nuovi messaggi</h5>
+                                <h6 class="text-secondary text-decoration-underline">Attiva notifiche testo</h6>
                             </div>
-                            <span class="orarioSms"></span>
+                        </div>
+                        <!-- search -->
+                        <div class="input-group my-2 p-1">
+                            <button class="btn btn-outline-info" type="button" id="button-addon1">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat"
+                                aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        </div>
+                        <!-- users -->
+                        <div class="users">
+                            <div class="user d-flex py-3 border border-1" v-for="(contact, index) in contacts"
+                                :class="(index == activeChat) ? 'active' : '' " @click="switchChat(index)">
+                                <img :src="contact.avatar" alt="img-user" class="ms-2">
+                                <div class="descrizione ms-2">
+                                    <h5>
+                                        {{contact.name}}
+                                    </h5>
+                                    <h6 v-for="sms in contact.messages">
+
+                                    </h6>
+                                </div>
+                                <span class="orarioSms"></span>
+                            </div>
+
+
                         </div>
 
-
                     </div>
-
                 </div>
 
                 <div class="col-7 px-0">
-                    <div class="user-chat">
 
-
-
-
-                        <!-- navbar -->
-                        <nav class="navbar navbar-expand-lg bg-light">
-                            <div class="container-fluid d-flex justify-content-between">
-                                <a class="navbar-brand d-flex align-items-center" href="#">
-                                    <img :src="contacts[activeChat].avatar" alt="img-user">
-                                    <h5>{{contacts[activeChat].name}}</h5>
-                                </a>
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                                    <div class="navbar-nav">
-                                        <a class="nav-link" href="#">
-                                            <i class="fa-solid fa-magnifying-glass"></i>
-                                        </a>
-                                        <a class="nav-link" href="#">
-                                            <i class="fa-solid fa-paperclip"></i>
-                                        </a>
-                                        <a class="nav-link" href="#">
-                                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                                        </a>
-                                    </div>
+                    <!-- navbar -->
+                    <nav class="navbar navbar-expand-lg bg-light">
+                        <div class="container-fluid d-flex justify-content-between">
+                            <a class="navbar-brand d-flex align-items-center" href="#">
+                                <img :src="contacts[activeChat].avatar" alt="img-user">
+                                <h5>{{contacts[activeChat].name}}</h5>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                                <div class="navbar-nav">
+                                    <a class="nav-link" href="#">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                    <a class="nav-link" href="#">
+                                        <i class="fa-solid fa-paperclip"></i>
+                                    </a>
+                                    <a class="nav-link" href="#">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </a>
                                 </div>
                             </div>
-                        </nav>
+                        </div>
+                    </nav>
+                    <div class="main">
+
                         <!-- chat -->
-                        <div class="chat">
-                            <div class="rounded-3">
-                                <p></p>
+                        <div class="chat flex-grow-1 d-flex flex-column align-items-start">
+                            <div class="message p-2 m-2" v-for="(message, index) in myContact[activeChat].messages"
+                                :class="(myContact[activeChat].messages[index].status == 'sent') ? 'sent' : 'received'">
+                                <p class="p-0 m-0">
+                                    {{myContact[activeChat].messages[index].message}}
+                                </p>
+                                <small class="message-date">{{myContact[activeChat].messages[index].date}}
+                                </small>
                             </div>
 
                         </div>
+
+
                         <!-- navbar chat -->
                         <div class="chat-nav">
                             <div class="input-group m-2 px-4">
@@ -155,13 +163,12 @@
                                 <button class="btn btn-outline-secondary" type="button">Invio</button>
                                 <button class="btn btn-outline-secondary" type="button">Emoji</button>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
     </div>

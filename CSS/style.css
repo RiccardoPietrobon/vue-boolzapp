@@ -4,21 +4,57 @@ img {
     border-radius: 50px;
 }
 
+nav {
+    height: 12vh;
+}
+
+.main {
+    min-height: 75vh;
+}
+
+.users {
+    overflow: auto;
+    height: 60vh;
+}
+
+.user {
+    cursor: pointer;
+}
+
 .chat {
-    height: calc(100vh - 134px);
+    min-height: 70vh;
     background-image: url(../img/mine.jpg);
+    overflow: auto;
 }
 
-.inviati {
-    background-color: aquamarine;
-
+.chat-col {
+    width: 70%;
 }
 
-.ricevuti {
+.message {
+    max-width: 70%;
+    border-radius: 5px;
+    text-align: right;
+}
+
+.message p {
+    text-align: left;
+}
+
+.message.received {
     background-color: white;
+}
 
+.message.sent {
+    background-color: lightgreen;
+    align-self: flex-end;
+}
+
+.message-date {
+    font-size: 0.7rem;
+    color: gray;
 }
 
 .active {
-    background-color: darkgray;
+    background-color: lightgray;
 }
