@@ -3,3 +3,22 @@ img {
     object-fit: cover;
     border-radius: 50px;
 }
+
+.chat {
+    height: calc(100vh - 134px);
+    background-image: url(../img/mine.jpg);
+}
+
+.inviati {
+    background-color: aquamarine;
+
+}
+
+.ricevuti {
+    background-color: white;
+
+}
+
+.active {
+    background-color: darkgray;
+}

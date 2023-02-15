@@ -42,7 +42,7 @@
 
             <div class="row">
 
-                <div class="col-5">
+                <div class="col-5 px-0">
                     <!-- navbar user -->
                     <nav class="navbar navbar-expand-lg bg-light">
                         <div class="container-fluid d-flex justify-content-between">
@@ -88,10 +88,16 @@
                     </div>
                     <!-- users -->
                     <div class="users">
-                        <div class="user" v-for="contact in contacts">
-                            <img :src="contact.avatar" alt="img-user">
-                            <div class="descrizione">
-                                {{contact.name}}
+                        <div class="user d-flex py-3 border border-1" v-for="(contact, index) in contacts"
+                            :class="(index == activeChat) ? 'active' : '' " @click="switchChat(index)">
+                            <img :src="contact.avatar" alt="img-user" class="ms-2">
+                            <div class="descrizione ms-2">
+                                <h5>
+                                    {{contact.name}}
+                                </h5>
+                                <h6 v-for="sms in contact.messages">
+
+                                </h6>
                             </div>
                             <span class="orarioSms"></span>
                         </div>
@@ -101,8 +107,58 @@
 
                 </div>
 
-                <div class="col-7">
+                <div class="col-7 px-0">
+                    <div class="user-chat">
 
+
+
+
+                        <!-- navbar -->
+                        <nav class="navbar navbar-expand-lg bg-light">
+                            <div class="container-fluid d-flex justify-content-between">
+                                <a class="navbar-brand d-flex align-items-center" href="#">
+                                    <img :src="contacts[activeChat].avatar" alt="img-user">
+                                    <h5>{{contacts[activeChat].name}}</h5>
+                                </a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                                    <div class="navbar-nav">
+                                        <a class="nav-link" href="#">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </a>
+                                        <a class="nav-link" href="#">
+                                            <i class="fa-solid fa-paperclip"></i>
+                                        </a>
+                                        <a class="nav-link" href="#">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- chat -->
+                        <div class="chat">
+                            <div class="rounded-3">
+                                <p></p>
+                            </div>
+
+                        </div>
+                        <!-- navbar chat -->
+                        <div class="chat-nav">
+                            <div class="input-group m-2 px-4">
+                                <input type="text" class="form-control" placeholder="Scrivi messaggio"
+                                    aria-label="Recipient's username with two button addons">
+                                <button class="btn btn-outline-secondary" type="button">Invio</button>
+                                <button class="btn btn-outline-secondary" type="button">Emoji</button>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
