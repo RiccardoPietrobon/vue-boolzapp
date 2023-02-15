@@ -204,6 +204,10 @@ const app = Vue.createApp({
             activeChat: 0,
             filtro: "",
 
+            currentMessage: null,   //index messaggio
+            messageText: "",    //campo vuoto messaggio
+
+
         }
     },
 
@@ -213,6 +217,30 @@ const app = Vue.createApp({
             this.activeChat = index;
         },
 
+        addMessage(contact) {
+            let newSentMessage = {
+                date: 'thismoment',
+                message: this.messageText,
+                status: 'sent'
+            };
+
+            this.myContact[contact].messages.push(newSentMessage);
+
+            this.messageText = "";
+
+            setTimeout(
+                () => {
+                    let newReceivedMessage = {
+                        date: "thismoment",
+                        message: "Ok",
+                        status: 'received'
+                    };
+
+                    this.myContact[contact].messages.push(newReceivedMessage);
+
+                }, 1000
+            );
+        },
 
     },
 
@@ -226,10 +254,6 @@ const app = Vue.createApp({
         }
     }
 
-
-
-
-    //created() {},
 
 
 });
