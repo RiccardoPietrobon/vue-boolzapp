@@ -8,6 +8,7 @@ body {
 
 img {
     width: 50px;
+    height: 50px;
     object-fit: cover;
     border-radius: 50px;
 }
@@ -32,6 +33,14 @@ nav {
 
 .user {
     cursor: pointer;
+}
+
+.orarioSms {
+    font-size: 0.7rem;
+}
+
+.last-message {
+    font-size: 0.9rem;
 }
 
 .chat {

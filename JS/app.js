@@ -218,10 +218,12 @@ const app = Vue.createApp({
         },
 
         addMessage(contact) {
+
+
             let newSentMessage = {
-                date: 'thismoment',
+                date: "hour",
                 message: this.messageText,
-                status: 'sent'
+                status: 'sent',
             };
 
             this.myContact[contact].messages.push(newSentMessage);
@@ -231,9 +233,9 @@ const app = Vue.createApp({
             setTimeout(
                 () => {
                     let newReceivedMessage = {
-                        date: "thismoment",
+                        date: "hour",
                         message: "Ok",
-                        status: 'received'
+                        status: 'received',
                     };
 
                     this.myContact[contact].messages.push(newReceivedMessage);
@@ -247,11 +249,13 @@ const app = Vue.createApp({
     computed: {
         myContact() {
             return this.contacts.filter(
-                element => {
-                    return element.name.toLocaleLowerCase().includes(this.filtro.toLowerCase());
+                contact => {
+                    return contact.name.toLowerCase().includes(this.filtro.toLowerCase());
                 }
             );
-        }
+        },
+
+
     }
 
 

@@ -83,28 +83,33 @@
                         <!-- search -->
                         <div class="ricerca p-2">
                             <div class="input-group">
-                                <button class="btn btn-outline-info" type="button" id="button-addon1">
+                                <button class="btn btn-outline-info" type="button" id="button-addon1"
+                                    @click="myContact()">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>
                                 <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat"
-                                    aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    aria-label="Example text with button addon" aria-describedby="button-addon1"
+                                    v-model="filtro">
                             </div>
                         </div>
 
                         <!-- users -->
                         <div class="users">
-                            <div class="user d-flex py-3 border border-1" v-for="(contact, index) in contacts"
+                            <div class="user d-flex py-3 border border-1  d-flex" v-for="(contact, index) in myContact"
                                 :class="(index == activeChat) ? 'active' : '' " @click="switchChat(index)">
-                                <img :src="contact.avatar" alt="img-user" class="ms-2">
-                                <div class="descrizione ms-2">
-                                    <h5>
-                                        {{contact.name}}
-                                    </h5>
-                                    <h6 v-for="sms in contact.messages">
+                                <div class="descrizione ms-2 d-flex flex-grow-1">
+                                    <img :src="contact.avatar" alt="img-user" class="m-2">
+                                    <p class="text-start">
+                                        {{contact.name}} <br>
+                                        <span class="text-secondary last-message">
+                                            {{contact.messages[contact.messages.length-1].message}}
+                                        </span>
+                                    </p>
 
-                                    </h6>
                                 </div>
-                                <span class="orarioSms"></span>
+                                <small class="orarioSms text-secondary text-end m-2">
+                                    {{contact.messages[contact.messages.length-1].date}}
+                                </small>
                             </div>
 
 
@@ -119,8 +124,8 @@
                     <nav class="navbar navbar-expand-lg bg-light">
                         <div class="container-fluid d-flex justify-content-between">
                             <a class="navbar-brand d-flex align-items-center" href="#">
-                                <img :src="contacts[activeChat].avatar" alt="img-user">
-                                <h5>{{contacts[activeChat].name}}</h5>
+                                <img :src="myContact[activeChat].avatar" alt="img-user">
+                                <h5>{{myContact[activeChat].name}}</h5>
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
