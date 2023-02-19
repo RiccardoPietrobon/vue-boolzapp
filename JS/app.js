@@ -207,6 +207,11 @@ const app = Vue.createApp({
             currentMessage: null,   //index messaggio
             messageText: "",    //campo vuoto messaggio
 
+            activeMessage: {
+                index: 0,
+                open: true,
+            }
+
 
         }
     },
@@ -218,6 +223,9 @@ const app = Vue.createApp({
         },
 
         addMessage(contact) {
+
+            let now = dayjs();
+            console.log(now);
 
 
             let newSentMessage = {
@@ -244,6 +252,19 @@ const app = Vue.createApp({
             );
         },
 
+        messageMenu(clickedMessageIndex) {
+            if (clickedMessageIndex == this.activeMessage.index) {
+                this.activeMessage.open = !this.activeMessage.open;
+            } else {
+                this.activeMessage.index = clickedMessageIndex;
+                this.activeMessage.open = true;
+            }
+        },
+
+        deleteMessage(index) {
+            this.myContact[this.activeChat].messages.splice(index, 1);
+        },
+
     },
 
     computed: {
@@ -254,6 +275,7 @@ const app = Vue.createApp({
                 }
             );
         },
+
 
 
     }

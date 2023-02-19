@@ -80,3 +80,14 @@ nav {
 .active {
     background-color: lightgray;
 }
+
+.message-info {
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    background-color: cornflowerblue;
+    padding: 10px;
+    width: 120px;
+    text-align: left;
+    border-radius: 10px;
+}

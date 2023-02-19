@@ -28,8 +28,8 @@
 
     <!-- VUE -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-
+    <!--     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+ -->
     <!-- MAIN JS -->
     <script type="text/javascript" src="./JS/app.js" defer></script>
 
@@ -125,7 +125,14 @@
                         <div class="container-fluid d-flex justify-content-between">
                             <a class="navbar-brand d-flex align-items-center" href="#">
                                 <img :src="myContact[activeChat].avatar" alt="img-user">
-                                <h5>{{myContact[activeChat].name}}</h5>
+                                <div class="ms-2">
+                                    <h5>{{myContact[activeChat].name}}
+                                    </h5>
+                                    <span class="text-secondary last-message">
+                                        {{myContact[activeChat].messages[myContact[activeChat].messages.length-1].date}}
+                                    </span>
+
+                                </div>
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
@@ -151,13 +158,22 @@
 
                         <!-- chat -->
                         <div class="chat flex-grow-1 d-flex flex-column align-items-start">
-                            <div class="message p-2 m-2" v-for="(message, index) in myContact[activeChat].messages"
-                                :class="(myContact[activeChat].messages[index].status == 'sent') ? 'sent' : 'received'">
+                            <div class="message p-2 m-2 position-relative"
+                                v-for="(message, index) in myContact[activeChat].messages"
+                                :class="(myContact[activeChat].messages[index].status == 'sent') ? 'sent' : 'received'"
+                                @click="messageMenu(index)" :tabindex="index" @blur="activeMessage.open = false">
                                 <p class="p-0 m-0">
                                     {{myContact[activeChat].messages[index].message}}
                                 </p>
                                 <small class="message-date">{{myContact[activeChat].messages[index].date}}
                                 </small>
+                                <div v-if="activeMessage.open && activeMessage.index == index"
+                                    class="position-absolute top-100 start-50 translate-middle message-info">
+                                    <span class="p-1">Message info</span>
+                                    <span @click="deleteMessage(index)" class="p-1">Delete message
+                                        <span><i class="fa-solid fa-trash"></i></span>
+                                    </span>
+                                </div>
                             </div>
 
                         </div>
